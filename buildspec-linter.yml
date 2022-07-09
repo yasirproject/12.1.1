@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - apt-get update -y
+      - apt-get install -y uuid-runtime
+      - pip install cfn-lint
+  build:
+    commands:
+      - |
+        REPORT=$(uuidgen)-cfnlint-report.json
+        set +e; cfn-lint -f json > $REPORT
+        aws s3 cp $REPORT s3://$CFN_LINT_BUCKET/$AWS_ACCOUNT_ID/$CODE_PIPELINE_NAME/$(date +'%Y')/$(date +'%m')/$(date +'%d')/ --sse=aws:kms --sse-kms-key-id $CFN_LINT_KMS_KEY_ARN --acl bucket-owner-full-control
