@@ -24,8 +24,7 @@
                            "EmployeeId",
                         
                         "AttributeType": 
-                            "S"
-                        
+                            "S"                    
                     }
                 ],
                 "KeySchema": [
