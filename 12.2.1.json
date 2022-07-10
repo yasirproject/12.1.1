@@ -20,19 +20,19 @@
                 "TableName": "Employee",
                 "AttributeDefinitions": [
                     {
-                        "AttributeName": {
-                            "Ref": "HashKeyElementName"
-                        },
-                        "AttributeType": {
-                            "Ref": "HashKeyElementType"
-                        }
+                        "AttributeName": 
+                           "EmployeeId",
+                        
+                        "AttributeType": 
+                            "S"
+                        
                     }
                 ],
                 "KeySchema": [
                     {
-                        "AttributeName": {
-                            "Ref": "HashKeyElementName"
-                        },
+                        "AttributeName": 
+                            "EmployeeId",
+                        
                         "KeyType": "HASH"
                     }
                 ],
